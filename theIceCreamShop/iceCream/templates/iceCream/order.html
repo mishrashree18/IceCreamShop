@@ -1,0 +1,40 @@
+{% extends 'icecream/base.html' %}
+{% block 'body' %}
+{% load widget_tweaks %}
+<style>
+    body{
+        background-color: palevioletred;
+    }
+</style>
+ <div class="container">
+          <br><br>
+    <h1>Order an ice cream</h1>
+    <br>
+
+    <h2>{{ note }}</h2>
+    <br>
+   
+    <div class="form-group col-7">
+    <form action="{% url 'order' %}" method="post">
+        {% csrf_token %}
+        
+
+        {{ icecreamForm }}
+        </div>
+        <input type="submit" value="Order Ice Cream">
+    
+    </form>
+
+    <br><br>
+
+    Want more than one?
+
+    <form action="{% url 'icecreams' %}" method="GET">
+        {{ multiple_form }}
+        <input type="submit" value="Get Ice creams">
+    </form>
+    
+    </div>
+   
+
+{% endblock %}
